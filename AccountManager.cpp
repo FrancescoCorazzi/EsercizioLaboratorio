@@ -10,8 +10,6 @@ BankAccount *AccountManager::findAccount(std::string id) {
         if (a->getID() == id) {
             return a;
         }
-        else {
-            return nullptr;
-        }
     }
+    return nullptr;
 }
