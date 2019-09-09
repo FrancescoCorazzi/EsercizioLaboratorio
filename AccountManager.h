@@ -2,14 +2,14 @@
 // Created by coraz on 28/06/19.
 //
 
-#ifndef ESLABORATORIO_ACCOUNTDATABASE_H
-#define ESLABORATORIO_ACCOUNTDATABASE_H
+#ifndef ESLABORATORIO_ACCOUNTMANAGER_H
+#define ESLABORATORIO_ACCOUNTMANAGER_H
 
 
 #include <vector>
 #include "BankAccount.h"
 
-class AccountDatabase {
+class AccountManager {
 public:
 
     BankAccount* findAccount(std::string id);
@@ -19,4 +19,4 @@ private:
 };
 
 
-#endif //ESLABORATORIO_ACCOUNTDATABASE_H
+#endif //ESLABORATORIO_ACCOUNTMANAGER_H

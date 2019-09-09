@@ -14,10 +14,13 @@
  * Classe transazione include tipo (enum?), ID dell'altro<std::string>, ammontare<long>, data(unix timestamp?)
  * - istanziabile da dentro un CC (friend?) (CHIEDEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE)
  *
- * Singleton Banca o AccountDatabase con vettore di conti
+ * Singleton Banca o AccountManager con vettore di conti
  * metodo findAccount che restituisce puntatore a account con certo ID
  *
  */
 
+#include "AccountManager.h"
+#include "BankAccount.h"
+#include "Transaction.h"
 
 int main() {}

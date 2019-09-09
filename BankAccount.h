@@ -39,7 +39,7 @@ protected: //TODO needed or just private?
 private:
     void transfer(float amount, std::string id, transaction_type t);
 
-    std::string my_ID;
+    const std::string my_ID;
     float balance;
     std::vector<Transaction*> transactions;
 };
