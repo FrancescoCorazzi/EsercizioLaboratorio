@@ -23,6 +23,7 @@ bool BankAccount::transferTo(float amount, int id) {
     if(balance > amount) {
         transfer(amount * -1, id, OUTGOING);
         balance -= amount;
+        //TODO call receiveFrom()
     }
     else
         return false;

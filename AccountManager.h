@@ -12,6 +12,12 @@
 class AccountManager {
 public:
 
+    ~AccountManager(){
+        for(auto a : accounts){
+            delete a;
+        }
+    }
+
     static AccountManager* instance;
     static AccountManager* getInstance() {
         if(instance != nullptr)

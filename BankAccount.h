@@ -15,8 +15,10 @@ public:
 
     friend class AccountManager;
 
-    virtual ~BankAccount() { //FIXME handle the vector
-
+    virtual ~BankAccount() {
+        for(auto t : transactions) {
+            delete t;
+        }
     }
 
     int getID() const { return my_ID; }
@@ -34,11 +36,11 @@ public:
     bool transferTo(float amount, int id);
 
 protected: //TODO needed or just private?
-    void receiveFrom(float amount, int id);
-
 private:
 
     explicit BankAccount(int id, float b = 0) : my_ID(id), balance(b) {}
+
+    void receiveFrom(float amount, int id);
 
     void transfer(float amount, int id, transaction_type t);
 
