@@ -19,7 +19,7 @@ bool BankAccount::withdraw(float amount) {
         return false;
 }
 
-bool BankAccount::transferTo(float amount, std::string id) {
+bool BankAccount::transferTo(float amount, int id) {
     if(balance > amount) {
         transfer(amount * -1, id, OUTGOING);
         balance -= amount;
@@ -28,12 +28,12 @@ bool BankAccount::transferTo(float amount, std::string id) {
         return false;
 }
 
-void BankAccount::receiveFrom(float amount, std::string id) {
+void BankAccount::receiveFrom(float amount, int id) {
     transfer(amount, id, INGOING);
     balance += amount;
 }
 
-void BankAccount::transfer(float amount, std::string id, transaction_type t) {
+void BankAccount::transfer(float amount, int id, transaction_type t) {
     auto transaction = new Transaction(t, id, amount, time(nullptr));
     transactions.push_back(transaction);
 }

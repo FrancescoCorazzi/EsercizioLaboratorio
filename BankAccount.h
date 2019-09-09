@@ -17,13 +17,13 @@
 
 class BankAccount {
 public:
-    explicit BankAccount(std::string id, float b = 0) : my_ID(id), balance(b) {}
+    explicit BankAccount(int id, float b = 0) : my_ID(id), balance(b) {}
 
     virtual ~BankAccount() { //FIXME handle the vector
 
     }
 
-    std::string getID() const { return my_ID; }
+    int getID() const { return my_ID; }
 
     float getBalance() const { return balance; }
 
@@ -31,15 +31,15 @@ public:
 
     bool withdraw(float amount);
 
-    bool transferTo(float amount, std::string id);
+    bool transferTo(float amount, int id);
 
 protected: //TODO needed or just private?
-    void receiveFrom(float amount, std::string id);
+    void receiveFrom(float amount, int id);
 
 private:
-    void transfer(float amount, std::string id, transaction_type t);
+    void transfer(float amount, int id, transaction_type t);
 
-    const std::string my_ID;
+    const int my_ID;
     float balance;
     std::vector<Transaction*> transactions;
 };

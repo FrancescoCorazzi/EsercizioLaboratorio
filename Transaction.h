@@ -20,11 +20,11 @@ const transaction_type WITHDRAWAL = 3;
 class Transaction {
 public:
     //TODO make all private? (with BankAccount friend)
-    Transaction(transaction_type t, std::string oid, float a, time_t time) : type(t), other_ID(oid), amount(a), date(time) {}
+    Transaction(transaction_type t, int oid, float a, time_t time) : type(t), other_ID(oid), amount(a), date(time) {}
 
     transaction_type getType() const { return type; }
 
-    std::string getOtherId() const { return other_ID; }
+    int getOtherId() const { return other_ID; }
 
     float getAmount() const { return amount; }
 
@@ -34,7 +34,7 @@ public:
 
 private:
     const transaction_type type;
-    const std::string other_ID;
+    const int other_ID;
     const float amount;
     const time_t date;
 };
