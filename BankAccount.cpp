@@ -37,3 +37,16 @@ void BankAccount::transfer(float amount, int id, transaction_type t) {
     auto transaction = new Transaction(t, id, amount, time(nullptr));
     transactions.push_back(transaction);
 }
+
+void BankAccount::showTransaction() {
+    int i = 0;
+    for(auto t : transactions) {
+        std::cout << i << ". ";
+        t->showData();
+        i++;
+    }
+}
+
+void BankAccount::showTransaction(int i) {
+    transactions[i]->showData();
+}

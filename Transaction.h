@@ -35,7 +35,7 @@ public:
 private:
     const transaction_type type;
     const int other_ID;
-    const float amount;
+    const float amount;  //FIXME round to second decimal point
     const time_t date;
 };
 
