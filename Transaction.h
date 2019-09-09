@@ -19,8 +19,8 @@ const transaction_type WITHDRAWAL = 3;
 
 class Transaction {
 public:
-    //TODO make all private? (with BankAccount friend)
-    Transaction(transaction_type t, int oid, float a, time_t time) : type(t), other_ID(oid), amount(a), date(time) {}
+
+    friend class BankAccount;
 
     transaction_type getType() const { return type; }
 
@@ -33,6 +33,9 @@ public:
     void showData() const;
 
 private:
+
+    Transaction(transaction_type t, int oid, float a, time_t time) : type(t), other_ID(oid), amount(a), date(time) {}
+
     const transaction_type type;
     const int other_ID;
     const float amount;  //FIXME round to second decimal point

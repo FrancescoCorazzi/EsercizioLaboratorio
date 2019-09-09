@@ -12,7 +12,8 @@
 
 class BankAccount {
 public:
-    explicit BankAccount(int id, float b = 0) : my_ID(id), balance(b) {}
+
+    friend class AccountManager;
 
     virtual ~BankAccount() { //FIXME handle the vector
 
@@ -36,6 +37,9 @@ protected: //TODO needed or just private?
     void receiveFrom(float amount, int id);
 
 private:
+
+    explicit BankAccount(int id, float b = 0) : my_ID(id), balance(b) {}
+
     void transfer(float amount, int id, transaction_type t);
 
     int my_ID;

@@ -52,4 +52,5 @@ void AccountManager::updateNextNumber() {
         i++;
     }
     while(found);
+    next_number = i;
 }
