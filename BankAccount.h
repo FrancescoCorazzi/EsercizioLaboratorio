@@ -6,6 +6,7 @@
 #define ESLABORATORIO_BANKACCOUNT_H
 
 
+#include <memory>
 #include <string>
 #include <vector>
 #include "Transaction.h"
@@ -14,12 +15,6 @@ class BankAccount {
 public:
 
     friend class AccountManager;
-
-    virtual ~BankAccount() {
-        for(auto t : transactions) {
-            delete t;
-        }
-    }
 
     int getID() const { return my_ID; }
 
@@ -46,7 +41,7 @@ private:
 
     int my_ID;
     float balance;
-    std::vector<Transaction*> transactions;
+    std::vector<std::unique_ptr<Transaction>> transactions;
 };
 
 
