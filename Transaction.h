@@ -11,11 +11,12 @@
 #include <vector>
 #include <ctime>
 
-typedef unsigned char transaction_type;
-const transaction_type INGOING = 0;
-const transaction_type OUTGOING = 1;
-const transaction_type DEPOSIT = 2;
-const transaction_type WITHDRAWAL = 3;
+enum transaction_type{
+    INGOING,
+    OUTGOING,
+    WITHDRAWAL,
+    DEPOSIT
+};
 
 class Transaction {
 public:

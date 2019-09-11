@@ -10,16 +10,16 @@ void Transaction::showData() const {
     tm* tm = localtime(&date);
     switch(type) {
         case INGOING:
-            cout << amount << "€ ricevuti dal conto n. " << other_ID;
+            cout << amount << "euro ricevuti dal conto n. " << other_ID;
             break;
         case OUTGOING:
-            cout << amount << "€ inviati al conto n. " << other_ID;
+            cout << amount << "euro inviati al conto n. " << other_ID;
             break;
         case DEPOSIT:
-            cout << amount << "€ depositati il";
+            cout << amount << "euro depositati il";
             break;
         case WITHDRAWAL:
-            cout << amount << "€ ritirati il ";
+            cout << amount << "euro ritirati il ";
             break;
     }
     cout << " in data " << tm->tm_year + 1900 << "/" << setfill('0') << setw(2) << tm->tm_mon + 1 << "/" <<

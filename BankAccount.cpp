@@ -14,6 +14,7 @@ bool BankAccount::withdraw(float amount) {
     if(balance > amount) {
         transfer(amount * -1, my_ID, WITHDRAWAL);
         balance -= amount;
+        return true;
     }
     else
         return false;
@@ -24,6 +25,7 @@ bool BankAccount::transferTo(float amount, int id) {
         transfer(amount * -1, id, OUTGOING);
         balance -= amount;
         //TODO call receiveFrom()
+        return true;
     }
     else
         return false;
