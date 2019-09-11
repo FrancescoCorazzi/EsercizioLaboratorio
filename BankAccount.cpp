@@ -20,11 +20,11 @@ bool BankAccount::withdraw(float amount) {
         return false;
 }
 
-bool BankAccount::transferTo(float amount, int id) {
+bool BankAccount::transferTo(float amount, BankAccount& ba) {
     if(balance > amount) {
-        transfer(amount * -1, id, OUTGOING);
+        transfer(amount * -1, ba.getID(), OUTGOING);
         balance -= amount;
-        //TODO call receiveFrom()
+        ba.receiveFrom(amount, my_ID);
         return true;
     }
     else

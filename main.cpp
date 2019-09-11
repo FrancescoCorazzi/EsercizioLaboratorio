@@ -11,9 +11,6 @@
  * - ID assegnato controllando l'esistenza di ID precedenti?
  * - Bilancio totale(long) + bilancio del mese(?)
  *
- * Classe transazione include tipo (enum?), ID dell'altro<std::string>, ammontare<long>, data(unix timestamp?)
- * - istanziabile da dentro un CC (friend?) (CHIEDEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE)
- *
  * Singleton Banca o AccountManager con vettore di conti
  * metodo findAccount che restituisce puntatore a account con certo ID
  *

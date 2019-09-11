@@ -45,12 +45,12 @@ void AccountManager::updateNextNumber() {
     do {
         found = false;
         for (auto a : accounts) {
-            if(a->getID() == i) {
+            if (a->getID() == i) {
                 found = true;
+                i++;
                 break;
             }
         }
-        i++;
     }
     while(found);
     next_number = i;

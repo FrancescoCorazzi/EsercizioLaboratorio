@@ -30,7 +30,7 @@ public:
 
     bool withdraw(float amount);
 
-    bool transferTo(float amount, int id);
+    bool transferTo(float amount, BankAccount& ba);
 
 private:
     explicit BankAccount(int id, float b = 0) : my_ID(id), balance(b) {}
