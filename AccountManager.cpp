@@ -12,8 +12,7 @@ BankAccount *AccountManager::findAccount(int id) {
             return a;
         }
     }
-    //TODO Exception?
-    return nullptr;
+    throw accountNotFound();
 }
 
 void AccountManager::addAccount() {

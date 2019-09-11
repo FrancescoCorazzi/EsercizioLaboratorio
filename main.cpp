@@ -17,7 +17,5 @@
  */
 
 #include "AccountManager.h"
-#include "BankAccount.h"
-#include "Transaction.h"
 
 int main() {}

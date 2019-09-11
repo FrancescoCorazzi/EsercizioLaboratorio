@@ -9,26 +9,23 @@ void BankAccount::deposit(float amount) {
     balance += amount;
 }
 
-//TODO exceptions?
-bool BankAccount::withdraw(float amount) {
+void BankAccount::withdraw(float amount) {
     if(balance > amount) {
         transfer(amount * -1, my_ID, WITHDRAWAL);
         balance -= amount;
-        return true;
     }
     else
-        return false;
+        throw noMoneyException();
 }
 
-bool BankAccount::transferTo(float amount, BankAccount& ba) {
+void BankAccount::transferTo(float amount, BankAccount& ba) {
     if(balance > amount) {
         transfer(amount * -1, ba.getID(), OUTGOING);
         balance -= amount;
         ba.receiveFrom(amount, my_ID);
-        return true;
     }
     else
-        return false;
+        throw noMoneyException();
 }
 
 void BankAccount::receiveFrom(float amount, int id) {

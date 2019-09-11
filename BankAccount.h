@@ -9,6 +9,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "Exceptions.h"
 #include "Transaction.h"
 
 class BankAccount {
@@ -28,9 +29,9 @@ public:
 
     void deposit(float amount);
 
-    bool withdraw(float amount);
+    void withdraw(float amount);
 
-    bool transferTo(float amount, BankAccount& ba);
+    void transferTo(float amount, BankAccount& ba);
 
 private:
     explicit BankAccount(int id, float b = 0) : my_ID(id), balance(b) {}
