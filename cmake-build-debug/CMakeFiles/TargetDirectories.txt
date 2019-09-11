@@ -1,0 +1,11 @@
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/CMakeFiles/EsLaboratorio.dir
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/CMakeFiles/core.dir
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/test/CMakeFiles/rebuild_cache.dir
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/test/CMakeFiles/runGameCharacterTests.dir
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/test/CMakeFiles/edit_cache.dir
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/test/lib/googletest/CMakeFiles/rebuild_cache.dir
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/test/lib/googletest/CMakeFiles/gtest.dir
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/test/lib/googletest/CMakeFiles/edit_cache.dir
+/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/test/lib/googletest/CMakeFiles/gtest_main.dir

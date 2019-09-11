@@ -18,7 +18,6 @@ public:
         }
     }
 
-    static AccountManager* instance;
     static AccountManager* getInstance() {
         if(instance != nullptr)
             return instance;
@@ -44,6 +43,7 @@ private:
 
     void updateNextNumber();
 
+    static AccountManager* instance;
     std::vector<BankAccount*> accounts;
     int next_number;
 };

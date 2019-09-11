@@ -34,7 +34,6 @@ public:
     void showData() const;
 
 private:
-
     Transaction(transaction_type t, int oid, float a, time_t time) : type(t), other_ID(oid), amount(a), date(time) {}
 
     const transaction_type type;

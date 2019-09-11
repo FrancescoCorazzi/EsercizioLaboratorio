@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -g   CMakeFiles/EsLaboratorio.dir/main.cpp.o  -o EsLaboratorio libcore.a 

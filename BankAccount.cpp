@@ -40,15 +40,19 @@ void BankAccount::transfer(float amount, int id, transaction_type t) {
     transactions.push_back(std::unique_ptr<Transaction>(new Transaction(t, id, amount, time(nullptr))));
 }
 
-void BankAccount::showTransaction() {
-    int i = 0;
-    for(auto const& t : transactions) {
+void BankAccount::showBalance() const {
+    std::cout << std::setprecision(2) << std::fixed << balance << "€" << std::endl;
+}
+
+void BankAccount::showTransaction() const {
+    int i = 1;
+    for(auto& t : transactions) {
         std::cout << i << ". ";
         t->showData();
         i++;
     }
 }
 
-void BankAccount::showTransaction(int i) {
+void BankAccount::showTransaction(int i) const {
     transactions[i]->showData();
 }

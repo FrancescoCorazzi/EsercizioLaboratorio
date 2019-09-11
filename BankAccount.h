@@ -20,9 +20,11 @@ public:
 
     float getBalance() const { return balance; }
 
-    void showTransaction();
+    void showBalance() const;
 
-    void showTransaction(int i);
+    void showTransaction() const;
+
+    void showTransaction(int i) const;
 
     void deposit(float amount);
 
@@ -30,9 +32,7 @@ public:
 
     bool transferTo(float amount, int id);
 
-protected: //TODO needed or just private?
 private:
-
     explicit BankAccount(int id, float b = 0) : my_ID(id), balance(b) {}
 
     void receiveFrom(float amount, int id);

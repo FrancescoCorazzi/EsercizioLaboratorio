@@ -4,6 +4,7 @@
 
 #include "AccountManager.h"
 
+AccountManager* AccountManager::instance = nullptr;
 
 BankAccount *AccountManager::findAccount(int id) {
     for(auto a : accounts) {
