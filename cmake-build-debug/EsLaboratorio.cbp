@@ -292,6 +292,9 @@
 		<Unit filename="/home/coraz/CLionProjects/EsLaboratorio/BankAccount.h">
 			<Option target="core"/>
 		</Unit>
+		<Unit filename="/home/coraz/CLionProjects/EsLaboratorio/Exceptions.h">
+			<Option target="core"/>
+		</Unit>
 		<Unit filename="/home/coraz/CLionProjects/EsLaboratorio/Transaction.cpp">
 			<Option target="core"/>
 		</Unit>

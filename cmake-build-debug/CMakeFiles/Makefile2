@@ -163,8 +163,8 @@ test/preinstall: test/lib/googletest/preinstall
 
 # All Build rule for target.
 test/CMakeFiles/runGameCharacterTests.dir/all: test/lib/googletest/CMakeFiles/gtest_main.dir/all
-test/CMakeFiles/runGameCharacterTests.dir/all: CMakeFiles/core.dir/all
 test/CMakeFiles/runGameCharacterTests.dir/all: test/lib/googletest/CMakeFiles/gtest.dir/all
+test/CMakeFiles/runGameCharacterTests.dir/all: CMakeFiles/core.dir/all
 	$(MAKE) -f test/CMakeFiles/runGameCharacterTests.dir/build.make test/CMakeFiles/runGameCharacterTests.dir/depend
 	$(MAKE) -f test/CMakeFiles/runGameCharacterTests.dir/build.make test/CMakeFiles/runGameCharacterTests.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/coraz/CLionProjects/EsLaboratorio/cmake-build-debug/CMakeFiles --progress-num=11,12,13,14 "Built target runGameCharacterTests"
