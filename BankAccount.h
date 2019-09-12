@@ -38,7 +38,7 @@ private:
 
     void receiveFrom(float amount, int id); //riceve soldi da un altro conto
 
-    void transfer(float amount, int id, transaction_type t); //crea l'oggetto Transaction
+    void addTransaction(float amount, int id, transaction_type t); //crea l'oggetto Transaction
 
     void addTransaction(float amount, int oid, transaction_type t, time_t time); //crea un oggetto Transaction usato nella lettura da file
 

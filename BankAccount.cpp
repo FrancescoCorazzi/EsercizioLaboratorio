@@ -5,13 +5,13 @@
 #include "BankAccount.h"
 
 void BankAccount::deposit(float amount) {
-    transfer(amount, my_ID, DEPOSIT);
+    addTransaction(amount, my_ID, DEPOSIT, time(nullptr));
     balance += amount;
 }
 
 void BankAccount::withdraw(float amount) {
     if(balance > amount) {
-        transfer(amount * -1, my_ID, WITHDRAWAL);
+        addTransaction(amount * -1, my_ID, WITHDRAWAL, time(nullptr));
         balance -= amount;
     }
     else //fondi insufficienti
@@ -20,7 +20,7 @@ void BankAccount::withdraw(float amount) {
 
 void BankAccount::transferTo(float amount, shared_ptr<BankAccount> ba) {
     if(balance > amount) {
-        transfer(amount * -1, ba->getID(), OUTGOING);
+        addTransaction(amount * -1, ba->getID(), OUTGOING, time(nullptr));
         balance -= amount;
         ba->receiveFrom(amount, my_ID);
     }
@@ -29,12 +29,12 @@ void BankAccount::transferTo(float amount, shared_ptr<BankAccount> ba) {
 }
 
 void BankAccount::receiveFrom(float amount, int id) {
-    transfer(amount, id, INGOING);
+    addTransaction(amount, id, INGOING, time(nullptr));
     balance += amount;
 }
 
-void BankAccount::transfer(float amount, int id, transaction_type t) {
-    transactions.push_back(std::unique_ptr<Transaction>(new Transaction(t, id, amount, time(nullptr))));
+void BankAccount::addTransaction(float amount, int oid, transaction_type t, time_t time) {
+    transactions.push_back(std::unique_ptr<Transaction>(new Transaction(t, oid, amount, time)));
 }
 
 void BankAccount::showBalance() const {
@@ -52,8 +52,4 @@ void BankAccount::showTransaction() const {
 
 void BankAccount::showTransaction(int i) const {
     transactions[i]->showData();
-}
-
-void BankAccount::addTransaction(float amount, int oid, transaction_type t, time_t time) {
-    transactions.push_back(std::unique_ptr<Transaction>(new Transaction(t, oid, amount, time)));
 }
