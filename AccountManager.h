@@ -12,12 +12,6 @@
 class AccountManager {
 public:
 
-    ~AccountManager(){
-        for(auto a : accounts){
-            delete a;
-        }
-    }
-
     static AccountManager* getInstance() {
         if(instance != nullptr)
             return instance;
@@ -25,7 +19,7 @@ public:
             return new AccountManager();
     }
 
-    BankAccount* findAccount(int id);
+    std::shared_ptr<BankAccount> findAccount(int id);
 
     void addAccount();
 
@@ -44,7 +38,7 @@ private:
     void updateNextNumber();
 
     static AccountManager* instance;
-    std::vector<BankAccount*> accounts;
+    std::vector<std::shared_ptr<BankAccount>> accounts;
     int next_number;
 };
 

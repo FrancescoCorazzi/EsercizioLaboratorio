@@ -6,22 +6,22 @@
 
 AccountManager* AccountManager::instance = nullptr;
 
-BankAccount *AccountManager::findAccount(int id) {
-    for(auto a : accounts) {
+std::shared_ptr<BankAccount> AccountManager::findAccount(int id) {
+    for(auto& a : accounts) {
         if (a->getID() == id) {
-            return a;
+            return std::shared_ptr<BankAccount>(a);
         }
     }
     throw accountNotFound();
 }
 
 void AccountManager::addAccount() {
-    accounts.push_back(new BankAccount(next_number));
+    accounts.push_back(std::shared_ptr<BankAccount>(new BankAccount(next_number)));
     updateNextNumber();
 }
 
 void AccountManager::addAccount(float balance) {
-    accounts.push_back(new BankAccount(next_number, balance));
+    accounts.push_back(std::shared_ptr<BankAccount>(new BankAccount(next_number, balance)));
     updateNextNumber();
 }
 
@@ -43,7 +43,7 @@ void AccountManager::updateNextNumber() {
     bool found;
     do {
         found = false;
-        for (auto a : accounts) {
+        for (auto const& a : accounts) {
             if (a->getID() == i) {
                 found = true;
                 i++;
