@@ -27,45 +27,14 @@ void AccountManager::addAccount(float balance) {
     updateNextNumber();
 }
 
-void AccountManager::removeAccount(int id) {
-    int i = 0;
-    for(auto itr = accounts.begin(); itr != accounts.end(); itr++) {
-        if(accounts[i]->getID() == id) {
-            if(accounts[i]->getID() < next_number)
-                next_number = accounts[i]->getID();
-            accounts.erase(itr);
-            break;
-        } else {
-            i++;
-        }
-    }
-}
-
-void AccountManager::updateNextNumber() {
-    int i = 0;
-    bool found;
-    do {
-        found = false;
-        for (auto const& a : accounts) {
-            if (a->getID() == i) {
-                found = true;
-                i++;
-                break;
-            }
-        }
-    }
-    while(found);
-    next_number = i;
-}
-
 void AccountManager::addAccount(ifstream& file, string name) {
     addAccount();
     try {
         auto a = findAccount(stoi(name));
-        if(a)
-            accounts.back()->my_ID = stoi(name);
     }
-    catch(accountNotFound& e){}
+    catch(accountNotFound& e){
+        accounts.back()->my_ID = stoi(name);
+    }
     string line;
     int k = 0;
     if(file.is_open()){
@@ -124,6 +93,37 @@ void AccountManager::addFromFolder() {
         addAccount(file, entry.path().string().substr(path.length()));
     }
     updateNextNumber();
+}
+
+void AccountManager::removeAccount(int id) {
+    int i = 0;
+    for(auto itr = accounts.begin(); itr != accounts.end(); itr++) {
+        if(accounts[i]->getID() == id) {
+            if(accounts[i]->getID() < next_number)
+                next_number = accounts[i]->getID();
+            accounts.erase(itr);
+            break;
+        } else {
+            i++;
+        }
+    }
+}
+
+void AccountManager::updateNextNumber() {
+    int i = 0;
+    bool found;
+    do {
+        found = false;
+        for (auto const& a : accounts) {
+            if (a->getID() == i) {
+                found = true;
+                i++;
+                break;
+            }
+        }
+    }
+    while(found);
+    next_number = i;
 }
 
 void AccountManager::saveToFile() {
