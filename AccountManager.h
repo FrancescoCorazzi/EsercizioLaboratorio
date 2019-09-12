@@ -13,6 +13,8 @@
 
 using namespace std;
 
+// Singleton
+
 class AccountManager {
 public:
 
@@ -23,19 +25,19 @@ public:
             return new AccountManager();
     }
 
-    shared_ptr<BankAccount> findAccount(int id);
+    shared_ptr<BankAccount> findAccount(int id); //trova il puntatore al conto con l'id specificato
 
-    void addAccount();
+    void addAccount(); //aggiunge conto con parametri di default
 
-    void addAccount(float balance);
+    void addAccount(float balance); //aggiunge conto con bilancio iniziale
 
-    void addAccount(ifstream& file, string name);
+    void addAccount(ifstream& file, string name); //aggiunge conto a partire da file
 
-    void addFromFolder();
+    void addFromFolder(); //crea un conto per ogni file in ./accounts/
 
-    void saveToFile();
+    void saveToFile(); //salva ogni conto in un file contenente le transazioni
 
-    void removeAccount(int id);
+    void removeAccount(int id); //rimuove il conto con l'id specificato
 
 private:
     AccountManager() {
@@ -43,7 +45,7 @@ private:
         next_number = 0;
     }
 
-    void updateNextNumber();
+    void updateNextNumber(); //ricerca l'ID minore disponibile
 
     static AccountManager* instance;
     vector<shared_ptr<BankAccount>> accounts;

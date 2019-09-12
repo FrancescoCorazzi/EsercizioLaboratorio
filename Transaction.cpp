@@ -7,8 +7,8 @@
 using namespace std;
 
 void Transaction::showData() const {
-    tm* tm = localtime(&date);
-    switch(type) {
+    tm* tm = localtime(&date); //formattare l'oggetto time_t
+    switch(type) { //setprecision seguito da fixed per mostrare solamente 2 cifre decimali
         case INGOING:
             cout << setprecision(2) << fixed << amount << "€ ricevuti dal conto n. " << other_ID;
             break;

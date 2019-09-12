@@ -14,7 +14,7 @@ void BankAccount::withdraw(float amount) {
         transfer(amount * -1, my_ID, WITHDRAWAL);
         balance -= amount;
     }
-    else
+    else //fondi insufficienti
         throw noMoneyException();
 }
 
@@ -24,7 +24,7 @@ void BankAccount::transferTo(float amount, shared_ptr<BankAccount> ba) {
         balance -= amount;
         ba->receiveFrom(amount, my_ID);
     }
-    else
+    else //fondi insufficienti
         throw noMoneyException();
 }
 

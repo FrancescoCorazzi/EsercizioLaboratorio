@@ -29,14 +29,17 @@ void AccountManager::addAccount(float balance) {
 
 void AccountManager::addAccount(ifstream& file, string name) {
     addAccount();
+    //verifica se esiste già un conto con l'account, altrimenti modifica l'ID del nuovo conto per essere lo stesso di quello salvato
     try {
         auto a = findAccount(stoi(name));
     }
     catch(accountNotFound& e){
         accounts.back()->my_ID = stoi(name);
     }
+    updateNextNumber();
     string line;
     int k = 0;
+    //scorre le righe del file per estrarre prima il bilancio, poi le transazioni
     if(file.is_open()){
         while(getline(file, line)){
             if(!k) {
@@ -76,6 +79,7 @@ void AccountManager::addAccount(ifstream& file, string name) {
                             break;
                         }
                         default:
+                            //più di 4 dati nella riga
                             throw runtime_error("La riga conteneva più dati del previsto.");
                     }
                     i++;
@@ -88,11 +92,11 @@ void AccountManager::addAccount(ifstream& file, string name) {
 
 void AccountManager::addFromFolder() {
     std::string path = "../accounts/";
+    //scorre ogni file della cartella, e passa percorso relativo e nome del file
     for (const auto & entry : fs::directory_iterator(path)) {
         ifstream file(entry.path().string(), ios::in);
         addAccount(file, entry.path().string().substr(path.length()));
     }
-    updateNextNumber();
 }
 
 void AccountManager::removeAccount(int id) {
@@ -110,6 +114,7 @@ void AccountManager::removeAccount(int id) {
 }
 
 void AccountManager::updateNextNumber() {
+    // scorre ogni valore a partire da 0 per verificare se esiste già un conto con quell'ID
     int i = 0;
     bool found;
     do {
@@ -131,6 +136,7 @@ void AccountManager::saveToFile() {
         ofstream file("../accounts/" + to_string(a->getID()), ios::trunc | ios::out);
         if(file.is_open()){
             file << to_string(a->getBalance()) + "\n";
+            //formatta i membri della transazione come amount::oid::type::date
             for(auto const& t : a->transactions){
                 file << to_string(t->getAmount()) + "::" + to_string(t->getOtherId()) + "::" +
                         to_string(t->getType()) + "::" + to_string(t->getDate()) + "\n";

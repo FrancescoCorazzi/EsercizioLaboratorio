@@ -21,7 +21,7 @@ enum transaction_type : int {
 class Transaction {
 public:
 
-    friend class BankAccount;
+    friend class BankAccount; //uso del costruttore privato
 
     transaction_type getType() const { return type; }
 
