@@ -11,7 +11,7 @@
 #include <vector>
 #include <ctime>
 
-enum transaction_type{
+enum transaction_type : int {
     INGOING,
     OUTGOING,
     WITHDRAWAL,

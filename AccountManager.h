@@ -6,8 +6,12 @@
 #define ESLABORATORIO_ACCOUNTMANAGER_H
 
 
+#include <fstream>
 #include <vector>
+#include <experimental/filesystem>
 #include "BankAccount.h"
+
+using namespace std;
 
 class AccountManager {
 public:
@@ -19,13 +23,17 @@ public:
             return new AccountManager();
     }
 
-    std::shared_ptr<BankAccount> findAccount(int id);
+    shared_ptr<BankAccount> findAccount(int id);
 
     void addAccount();
 
     void addAccount(float balance);
 
-    //TODO void addAccount(filestream);
+    void addAccount(ifstream& file, string name);
+
+    void addFromFolder();
+
+    void saveToFile();
 
     void removeAccount(int id);
 
@@ -38,7 +46,7 @@ private:
     void updateNextNumber();
 
     static AccountManager* instance;
-    std::vector<std::shared_ptr<BankAccount>> accounts;
+    vector<shared_ptr<BankAccount>> accounts;
     int next_number;
 };
 

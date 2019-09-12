@@ -31,7 +31,7 @@ public:
 
     void withdraw(float amount);
 
-    void transferTo(float amount, BankAccount& ba);
+    void transferTo(float amount, shared_ptr<BankAccount> ba);
 
 private:
     explicit BankAccount(int id, float b = 0) : my_ID(id), balance(b) {}
@@ -39,6 +39,8 @@ private:
     void receiveFrom(float amount, int id);
 
     void transfer(float amount, int id, transaction_type t);
+
+    void addTransaction(float amount, int oid, transaction_type t, time_t time);
 
     int my_ID;
     float balance;

@@ -18,11 +18,11 @@ void BankAccount::withdraw(float amount) {
         throw noMoneyException();
 }
 
-void BankAccount::transferTo(float amount, BankAccount& ba) {
+void BankAccount::transferTo(float amount, shared_ptr<BankAccount> ba) {
     if(balance > amount) {
-        transfer(amount * -1, ba.getID(), OUTGOING);
+        transfer(amount * -1, ba->getID(), OUTGOING);
         balance -= amount;
-        ba.receiveFrom(amount, my_ID);
+        ba->receiveFrom(amount, my_ID);
     }
     else
         throw noMoneyException();
@@ -52,4 +52,8 @@ void BankAccount::showTransaction() const {
 
 void BankAccount::showTransaction(int i) const {
     transactions[i]->showData();
+}
+
+void BankAccount::addTransaction(float amount, int oid, transaction_type t, time_t time) {
+    transactions.push_back(std::unique_ptr<Transaction>(new Transaction(t, oid, amount, time)));
 }
