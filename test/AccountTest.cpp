@@ -47,3 +47,15 @@ TEST(BankAccount, NextIDTest) {
     auto ac3 = am->addAccount();
     ASSERT_EQ(ac3->getID(), 1) << "L'ID non è aggiornato correttamente";
 }
+
+TEST(BankAccount, AccountNotFoundExceptionTest) {
+    auto am = AccountManager::getInstance();
+    am->addAccount();
+    ASSERT_THROW(am->findAccount(99), accountNotFound);
+}
+
+TEST(BankAccount, NoMoneyExceptionTest) {
+    auto am = AccountManager::getInstance();
+    auto ac0 = am->addAccount(10);
+    ASSERT_THROW(ac0->withdraw(50), noMoneyException);
+}
