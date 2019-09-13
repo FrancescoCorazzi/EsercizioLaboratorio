@@ -17,14 +17,16 @@ shared_ptr<BankAccount> AccountManager::findAccount(int id) {
     throw accountNotFound();
 }
 
-void AccountManager::addAccount() {
+shared_ptr<BankAccount> AccountManager::addAccount() {
     accounts.push_back(shared_ptr<BankAccount>(new BankAccount(next_number)));
     updateNextNumber();
+    return shared_ptr<BankAccount>(accounts.back());
 }
 
-void AccountManager::addAccount(float balance) {
+shared_ptr<BankAccount> AccountManager::addAccount(float balance) {
     accounts.push_back(shared_ptr<BankAccount>(new BankAccount(next_number, balance)));
     updateNextNumber();
+    return shared_ptr<BankAccount>(accounts.back());
 }
 
 void AccountManager::addAccount(ifstream& file, string name) {

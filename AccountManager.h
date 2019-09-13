@@ -27,11 +27,9 @@ public:
 
     shared_ptr<BankAccount> findAccount(int id); //trova il puntatore al conto con l'id specificato
 
-    void addAccount(); //aggiunge conto con parametri di default
+    shared_ptr<BankAccount> addAccount(); //aggiunge conto con parametri di default
 
-    void addAccount(float balance); //aggiunge conto con bilancio iniziale
-
-    void addAccount(ifstream& file, string name); //aggiunge conto a partire da file
+    shared_ptr<BankAccount> addAccount(float balance); //aggiunge conto con bilancio iniziale
 
     void addFromFolder(); //crea un conto per ogni file in ./accounts/
 
@@ -40,12 +38,14 @@ public:
     void removeAccount(int id); //rimuove il conto con l'id specificato
 
 private:
+
     AccountManager() {
         instance = this;
         next_number = 0;
     }
-
     void updateNextNumber(); //ricerca l'ID minore disponibile
+
+    void addAccount(ifstream& file, string name); //aggiunge conto a partire da file
 
     static AccountManager* instance;
     vector<shared_ptr<BankAccount>> accounts;
