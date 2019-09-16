@@ -13,6 +13,9 @@ protected:
         ac0 = am->addAccount(5722);
         ac1 = am->addAccount(17000);
         ac2 = am->addAccount();
+        id0 = ac0->getID();
+        id1 = ac1->getID();
+        id2 = ac2->getID();
         ac0->transferTo(722, ac2);
     }
 
@@ -20,15 +23,18 @@ protected:
     shared_ptr<BankAccount> ac0;
     shared_ptr<BankAccount> ac1;
     shared_ptr<BankAccount> ac2;
+    int id0;
+    int id1;
+    int id2;
 };
 
 TEST_F(AccountTesting, SaveToDiskTest) {
-    am->saveToFile();
-    am->removeAccount(0);
-    am->removeAccount(2);
-    am->addFromFolder();
-    EXPECT_EQ(am->findAccount(0)->getBalance(), 5000) << "L'account con ID 0 non è stato caricato correttamente";
-    EXPECT_EQ(am->findAccount(2)->getBalance(), 722) << "L'account con ID 2 non è stato caricato correttamente";
-    EXPECT_EQ(am->findAccount(3)->getBalance(), am->findAccount(1)->getBalance())
-        << "L'account che aveva ID 1 non è stato caricato correttamente";
+    am->saveToFile("../../accounts/");
+    am->removeAccount(id0);
+    am->removeAccount(id1);
+    am->addFromFolder("../../accounts/");
+    EXPECT_EQ(am->findAccount(id0)->getBalance(), 5000) << "L'account con ID " + to_string(id0) + " non è stato caricato correttamente";
+    EXPECT_EQ(am->findAccount(id2)->getBalance(), 722) << "L'account con ID " + to_string(id2) + " non è stato caricato correttamente";
+    EXPECT_EQ(am->findAccount(id1)->getBalance(), am->findAccount(id1)->getBalance())
+        << "L'account che aveva ID " + to_string(id1) + " non è stato caricato correttamente";
 }

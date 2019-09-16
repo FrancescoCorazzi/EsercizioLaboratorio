@@ -31,9 +31,9 @@ public:
 
     shared_ptr<BankAccount> addAccount(float balance); //aggiunge conto con bilancio iniziale
 
-    void addFromFolder(); //crea un conto per ogni file in ./accounts/
+    void addFromFolder(std::string path); //crea un conto per ogni file in ./accounts/
 
-    void saveToFile(); //salva ogni conto in un file contenente le transazioni
+    void saveToFile(std::string path); //salva ogni conto in un file contenente le transazioni
 
     void removeAccount(int id); //rimuove il conto con l'id specificato
 

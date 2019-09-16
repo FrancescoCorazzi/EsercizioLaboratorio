@@ -30,12 +30,13 @@ shared_ptr<BankAccount> AccountManager::addAccount(float balance) {
 }
 
 void AccountManager::addAccount(ifstream& file, string name) {
-    addAccount();
-    //verifica se esiste già un conto con l'account, altrimenti modifica l'ID del nuovo conto per essere lo stesso di quello salvato
+    //verifica se esiste già un conto con l'account, e in quel caso interrompe il ripristino dell'account
     try {
         auto a = findAccount(stoi(name));
+        return;
     }
     catch(accountNotFound& e){
+        addAccount();
         accounts.back()->my_ID = stoi(name);
     }
     updateNextNumber();
@@ -92,8 +93,7 @@ void AccountManager::addAccount(ifstream& file, string name) {
     }
 }
 
-void AccountManager::addFromFolder() {
-    std::string path = "../accounts/";
+void AccountManager::addFromFolder(std::string path) {
     //scorre ogni file della cartella, e passa percorso relativo e nome del file
     for (const auto & entry : fs::directory_iterator(path)) {
         ifstream file(entry.path().string(), ios::in);
@@ -133,9 +133,9 @@ void AccountManager::updateNextNumber() {
     next_number = i;
 }
 
-void AccountManager::saveToFile() {
+void AccountManager::saveToFile(std::string path) {
     for(auto const& a : accounts){
-        ofstream file("../accounts/" + to_string(a->getID()), ios::trunc | ios::out);
+        ofstream file(path + to_string(a->getID()), ios::trunc | ios::out);
         if(file.is_open()){
             file << to_string(a->getBalance()) + "\n";
             //formatta i membri della transazione come amount::oid::type::date
